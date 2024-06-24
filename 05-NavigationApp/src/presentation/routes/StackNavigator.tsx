@@ -3,6 +3,9 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { ProductsScreen } from '../screens/products/ProductsScreen';
 import { ProductScreen } from '../screens/products/ProductScreen';
 import { SettingScreen } from '../screens/SettingScreen';
+import { useNavigation } from '@react-navigation/native';
+import { useEffect } from 'react';
+import { globalColors } from '../theme/theme';
 
 //definir parametros
 export type RootStackParams = {
@@ -16,8 +19,18 @@ export type RootStackParams = {
 const Stack = createStackNavigator();
 
 export const StackNavigator = () => {
+    const navigation = useNavigation()
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown: false
+        })
+    }, [])
+
+
     return (
         <Stack.Navigator screenOptions={{
+            headerTintColor: globalColors.primary,
             headerShown: true,
             headerStyle: {
                 elevation: 0,

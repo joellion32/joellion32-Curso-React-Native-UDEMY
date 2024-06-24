@@ -1,11 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import { StackNavigator } from './src/presentation/routes/StackNavigator';
+import { DrawerNavigation } from './src/presentation/routes/DrawerNavigation';
+import { BottomTabNavigator } from './src/presentation/routes/BottomTabsNavigation';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <StackNavigator />
+      <DrawerNavigation />
     </NavigationContainer>
   );
 }

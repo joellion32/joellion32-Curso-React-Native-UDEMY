@@ -1,17 +1,22 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { globalStyles } from '../theme/theme'
-import { useNavigation } from '@react-navigation/native'
+import { DrawerActions, NavigationProp, useNavigation } from '@react-navigation/native'
 import { PrimaryButton } from '../components/shared/PrimaryButton'
+import { RootStackParams } from '../routes/StackNavigator'
+import { HamburgerMenu } from '../components/shared/HamburgerMenu'
 
 export const HomeScreen = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
     return (
-        <View style={globalStyles.container}>
-            <PrimaryButton onPress={() => navigation.navigate('Products' as never)} label="Ir a Productos" />
-            <PrimaryButton onPress={() => navigation.navigate('Settings' as never)} label="Ir a Configuracion" />
-        </View>
+        <>
+            <HamburgerMenu />
+            <View style={globalStyles.container}>
+                <PrimaryButton onPress={() => navigation.navigate('Products' as never)} label="Ir a Productos" />
+                <PrimaryButton onPress={() => navigation.navigate('Settings' as never)} label="Ir a Configuracion" />
+            </View>
+        </>
     )
 }
 
