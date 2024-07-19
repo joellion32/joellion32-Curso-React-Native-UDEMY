@@ -1,11 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from './src/presentation/navigation/Navigation';
+import { DarkTheme, DefaultTheme } from '@react-navigation/native';
+
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={DefaultTheme}>
       <Navigation />
     </NavigationContainer>
   );

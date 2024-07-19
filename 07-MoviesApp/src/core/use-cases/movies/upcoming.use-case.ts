@@ -3,9 +3,18 @@ import { MovieDBMoviesResponse } from "../../../infrastucture/interfaces/movie-d
 import { MovieMapper } from "../../../infrastucture/mappers/movie.mapper"
 import type { Movie } from "../../models/movie.model"
 
-export const moviesUpComingUseCase = async (fecther: HttpAdapter): Promise<Movie[]> => {
+interface Options {
+    limit?: number;
+    page?: number;
+}
+
+export const moviesUpComingUseCase = async (fecther: HttpAdapter, options?: Options): Promise<Movie[]> => {
     try {
-        const upComingMovies = await fecther.get<MovieDBMoviesResponse>('/upcoming')
+        const upComingMovies = await fecther.get<MovieDBMoviesResponse>('/upcoming', {
+            params: {
+                page: options?.page ?? 1 // implementando paginacion
+            }
+        })
         return upComingMovies.results.map(result => MovieMapper.fromMovieDBResultToEntity(result))
     } catch (error) {
         console.log(error)
