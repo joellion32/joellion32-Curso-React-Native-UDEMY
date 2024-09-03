@@ -1,16 +1,18 @@
 import { Animated, StyleSheet, View, Button, Easing } from 'react-native'
-import React from 'react'
-import { colors } from '../../../config/theme'
+import React, { useContext } from 'react'
 import { useAnimation } from '../../hooks/useAnimation'
+import { ThemeContext } from '../../context/ThemeContext'
+
 
 export const Animation101Screen = () => {
-
+    const { colors } = useContext(ThemeContext)
     const { animatedOpacity, animatedTop, fadeIn, fadeOut, startMovingTopPosition } = useAnimation()
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: colors.background }]}>
             <Animated.View style={[styles.purpleBox,
             {
+                backgroundColor: colors.primary,
                 opacity: animatedOpacity,
                 transform: [{ translateY: animatedTop }]
             }]
@@ -36,7 +38,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     purpleBox: {
-        backgroundColor: colors.primary,
         width: 150,
         height: 150,
     }

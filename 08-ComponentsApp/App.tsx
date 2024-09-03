@@ -1,12 +1,12 @@
 import React from 'react';
-import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { Navigation } from './src/presentation/navigation/Navigation';
+import { ThemeProvider } from './src/presentation/context/ThemeContext';
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <ThemeProvider>
       <Navigation />
-    </NavigationContainer>
-  );
+    </ThemeProvider>
+  )
 }
 
